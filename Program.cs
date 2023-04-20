@@ -1,7 +1,19 @@
+using api.Models;
+using api.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddEntityFrameworkSqlServer()
+    .AddDbContext<FinancesDbContext>(
+        options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+    );
+
+builder.Services.AddScoped<ComponentsUserRepository, UserRepository>();
 
 var app = builder.Build();
 

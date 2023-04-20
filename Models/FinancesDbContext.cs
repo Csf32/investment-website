@@ -8,8 +8,8 @@ namespace api.Models
 
         }
 
-        public DbSet<Users> Users { get; set; }
-
+        public DbSet<UsersModel> users { get; set; }
+        public DbSet<ProductsModel> products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
